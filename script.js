@@ -1406,3 +1406,61 @@ window.handleImageError = function(img) {
   img.onerror = null; // Prevent infinite loop in case fallback also fails
   img.src = "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80";
 };
+
+// Clipboard function requested by user with robust iframe fallback and dual-notification
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      if (window.showToast) {
+        window.showToast("Copied successfully! / Itti milkaa'eera!", "success");
+      }
+      try {
+        alert("Copied successfully! / Itti milkaa'eera!");
+      } catch (e) {
+        console.warn("Alert blocked in iframe environment");
+      }
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      fallbackCopyToClipboard(text);
+    });
+  } else {
+    fallbackCopyToClipboard(text);
+  }
+}
+
+function fallbackCopyToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      if (window.showToast) {
+        window.showToast("Copied successfully! / Itti milkaa'eera!", "success");
+      }
+      try {
+        alert("Copied successfully! / Itti milkaa'eera!");
+      } catch (e) {
+        console.warn("Alert blocked in iframe environment");
+      }
+    } else {
+      if (window.showToast) {
+        window.showToast("Could not copy text / Hindandakamne", "error");
+      }
+    }
+  } catch (err) {
+    console.error('Fallback failed', err);
+    if (window.showToast) {
+      window.showToast("Could not copy text / Hindandakamne", "error");
+    }
+  }
+  document.body.removeChild(textArea);
+}
+
+window.copyToClipboard = copyToClipboard;
+
