@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMOO ACADEMY | Learn Today, Build Tomorrow</title>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-[#F8FAFC] text-[#0F172A] dark:bg-[#020617] dark:text-[#F8FAFC] transition-colors duration-300 min-h-screen flex flex-col">
+    
+    <!-- Page Loader Overlay -->
+    <div id="page-loader">
+      <div class="flex flex-col items-center gap-4">
+        <div class="loader-spinner"></div>
+        <p class="text-sm font-bold tracking-wider text-teal-600 dark:text-teal-400 uppercase">Amoo Academy</p>
+      </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-50 glass border-b border-slate-200/40 dark:border-slate-800/60 w-full transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-black tracking-tight text-[#0F172A] dark:text-white leading-none">AMOO</span>
+            <span class="text-[10px] font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase mt-0.5">ACADEMY</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-bold text-teal-600 dark:text-teal-400">Home</a>
+          <a href="courses.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Courses</a>
+          <a href="demo.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Watch Demo</a>
+          <a href="#faq" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">FAQs</a>
+          <a href="#contact" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side Controls (Theme, User Profile) -->
+        <div class="flex items-center gap-4">
+          <!-- Dark Mode Toggle Button -->
+          <button class="theme-toggle-btn p-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-900/40 transition-colors cursor-pointer" aria-label="Toggle Dark Theme">
+            <!-- Icon is dynamically inserted by JS -->
+          </button>
+
+          <!-- User Dynamic Container -->
+          <div class="nav-user-container">
+            <!-- Dynamically populated by script.js -->
+          </div>
+
+          <!-- Mobile Hamburger Trigger -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-500 dark:text-slate-300 cursor-pointer hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-80 max-w-xs bg-white dark:bg-[#0c1120] z-50 shadow-2xl p-6 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-200/50 dark:border-slate-800">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Navigation</span>
+        <button id="mobile-menu-close" class="p-2 text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-5 text-base font-bold text-slate-700 dark:text-slate-300 mb-8">
+        <a href="index.html" class="text-teal-600 dark:text-teal-400">Home</a>
+        <a href="courses.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Courses</a>
+        <a href="demo.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Watch Demo</a>
+        <a href="#faq" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">FAQs</a>
+        <a href="#contact" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Contact</a>
+      </nav>
+      <!-- Mobile Auth -->
+      <div class="nav-user-container mt-auto"></div>
+    </div>
+
+    <!-- MAIN BODY -->
+    <main class="flex-grow">
+      
+      <!-- HERO SECTION -->
+      <section class="relative overflow-hidden py-20 lg:py-28 border-b border-slate-200/30 dark:border-slate-800/50">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-indigo-500/5 -z-10"></div>
+        <!-- Light blobs with float animations -->
+        <div class="absolute top-1/4 left-1/10 w-80 h-80 bg-teal-500/10 dark:bg-teal-500/5 rounded-full filter blur-3xl -z-10 animate-float-slow"></div>
+        <div class="absolute bottom-1/4 right-1/10 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full filter blur-3xl -z-10 animate-float-reverse"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+          <!-- Text Content -->
+          <div class="lg:col-span-6 flex flex-col text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-6 mx-auto lg:mx-0 max-w-fit shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse"></span>
+              Special Promotion: 200 ETB for all courses
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0F172A] dark:text-white leading-[1.05] tracking-tight mb-6">
+              Learn Today, <br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600 dark:from-teal-400 dark:to-indigo-400">Build Tomorrow</span>
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-300 font-medium mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              Unlock a world of high-income skills at Amoo Academy. Web Development, Graphics, Marketing, Customer Service, and Multimedia taught in simple, practical, and highly engaging methods.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a href="courses.html" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white font-black text-base rounded-2xl hover:scale-105 hover:shadow-[0_8px_25px_-5px_rgba(20,184,166,0.4)] transition-all duration-300 text-center">
+                Start Learning Now
+              </a>
+              <a href="demo.html" class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900/50 font-bold text-base rounded-2xl hover:scale-105 hover:shadow-lg transition-all duration-300 text-center flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+                Watch Demo
+              </a>
+            </div>
+          </div>
+          <!-- Image Banner -->
+          <div class="lg:col-span-6 relative">
+            <div class="absolute -inset-2 rounded-[32px] bg-gradient-to-tr from-teal-500 to-indigo-500 opacity-20 filter blur-xl -z-10 animate-float-slow"></div>
+            <div class="glass p-3 rounded-[32px] border border-slate-200/50 dark:border-slate-800/50">
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" alt="Students learning together" class="w-full h-auto rounded-2xl object-cover shadow-2xl">
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-6 -left-6 glass p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800/80 max-w-xs shadow-xl hidden sm:flex items-center gap-3 animate-float-slow">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl">★</div>
+              <div>
+                <span class="block font-black text-[#0F172A] dark:text-white leading-tight text-sm">4.9 / 5.0 Rating</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400">From 2,000+ Students</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATISTICS SECTION -->
+      <section class="py-12 bg-[#F8FAFC]/50 dark:bg-[#020617]/50 border-b border-slate-200/30 dark:border-slate-800/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Stat 1 -->
+            <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex items-center gap-5 hover-lift">
+              <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center text-xl font-bold">
+                👥
+              </div>
+              <div>
+                <span class="block text-2xl font-black text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">2,000+</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Students Enrolled</span>
+              </div>
+            </div>
+            <!-- Stat 2 -->
+            <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex items-center gap-5 hover-lift">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl font-bold">
+                🎓
+              </div>
+              <div>
+                <span class="block text-2xl font-black text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">6+</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Mastery Courses</span>
+              </div>
+            </div>
+            <!-- Stat 3 -->
+            <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex items-center gap-5 hover-lift">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 dark:text-amber-400 flex items-center justify-center text-xl font-bold">
+                ✓
+              </div>
+              <div>
+                <span class="block text-2xl font-black text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">100%</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Verified Certificates</span>
+              </div>
+            </div>
+            <!-- Stat 4 -->
+            <div class="glass p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex items-center gap-5 hover-lift">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl font-bold">
+                📈
+              </div>
+              <div>
+                <span class="block text-2xl font-black text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">98%</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Success Rate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED COURSES -->
+      <section class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+              <span class="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-1.5 block">Explore Catalog</span>
+              <h2 class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white tracking-tight">Our Featured Courses</h2>
+            </div>
+            <a href="courses.html" class="mt-4 md:mt-0 inline-flex items-center gap-2 font-bold text-sm text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 transition-colors">
+              View All Courses
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </div>
+
+          <div id="featured-courses-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic featured cards loaded from JS -->
+          </div>
+        </div>
+           <!-- WHY CHOOSE US -->
+      <section class="py-20 lg:py-28 bg-white dark:bg-[#080d1e] border-y border-slate-200/40 dark:border-slate-800/60 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/5 to-indigo-500/5 -z-10 animate-pulse-slow"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-1.5 block">Why Amoo Academy</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white tracking-tight mb-4">A World-Class Learning Model</h2>
+            <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">We break down modern industry concepts to empower students across Ethiopia to build valuable digital careers.</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="glass p-8 rounded-[24px] border border-slate-200/50 dark:border-slate-800/50 hover-lift bg-white dark:bg-slate-900/40">
+              <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-xl mb-6 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] dark:text-white mb-2.5">Unbeatable Price</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Quality education shouldn't cause heavy debt. Pay only 200 ETB for full access to any comprehensive course.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="glass p-8 rounded-[24px] border border-slate-200/50 dark:border-slate-800/50 hover-lift bg-white dark:bg-slate-900/40">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-xl mb-6 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] dark:text-white mb-2.5">Practical Curriculums</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">We prioritize real projects, functional code, and physical assets over stale theoretical exams.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="glass p-8 rounded-[24px] border border-slate-200/50 dark:border-slate-800/50 hover-lift bg-white dark:bg-slate-900/40">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center font-bold text-xl mb-6 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] dark:text-white mb-2.5">Mentor Support</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Direct support from instructor Amanuel based in Harar, ensuring you're never stuck.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-1.5 block">Alumni Reviews</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white tracking-tight mb-4">What Our Students Say</h2>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Review 1 -->
+            <div class="glass p-8 rounded-[24px] border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between bg-white dark:bg-slate-900/40 hover-lift">
+              <p class="text-sm md:text-base text-slate-600 dark:text-slate-300 italic leading-relaxed mb-6">
+                "Taking the HTML & CSS Masterclass from Amanuel was a turning point. For just 200 ETB, I gained skills that helped me launch my remote freelance business."
+              </p>
+              <div class="flex items-center gap-4 border-t border-slate-200/40 dark:border-slate-800/40 pt-4">
+                <div class="w-11 h-11 rounded-full bg-slate-300 overflow-hidden ring-2 ring-teal-500/20">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Abdi" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <span class="block font-black text-[#0F172A] dark:text-white text-sm">Abdi Yousuf</span>
+                  <span class="block text-xs font-semibold text-teal-600 dark:text-teal-400">Harar, Ethiopia</span>
+                </div>
+              </div>
+            </div>
+            <!-- Review 2 -->
+            <div class="glass p-8 rounded-[24px] border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between bg-white dark:bg-slate-900/40 hover-lift">
+              <p class="text-sm md:text-base text-slate-600 dark:text-slate-300 italic leading-relaxed mb-6">
+                "The JavaScript course at Amoo Academy is very practical. Direct codes, and Amanuel checks in when you have questions. Highly recommend!"
+              </p>
+              <div class="flex items-center gap-4 border-t border-slate-200/40 dark:border-slate-800/40 pt-4">
+                <div class="w-11 h-11 rounded-full bg-slate-300 overflow-hidden ring-2 ring-teal-500/20">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Selam" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <span class="block font-black text-[#0F172A] dark:text-white text-sm">Selamawit Hailu</span>
+                  <span class="block text-xs font-semibold text-teal-600 dark:text-teal-400">Addis Ababa, Ethiopia</span>
+                </div>
+              </div>
+            </div>
+            <!-- Review 3 -->
+            <div class="glass p-8 rounded-[24px] border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between bg-white dark:bg-slate-900/40 hover-lift">
+              <p class="text-sm md:text-base text-slate-600 dark:text-slate-300 italic leading-relaxed mb-6">
+                "Unbelievable quality. I learned Video Editing and Graphic Design for under 400 ETB total. The lessons are precise, direct, and incredibly valuable."
+              </p>
+              <div class="flex items-center gap-4 border-t border-slate-200/40 dark:border-slate-800/40 pt-4">
+                <div class="w-11 h-11 rounded-full bg-slate-300 overflow-hidden ring-2 ring-teal-500/20">
+                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Chala" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <span class="block font-black text-[#0F172A] dark:text-white text-sm">Chala Tolosa</span>
+                  <span class="block text-xs font-semibold text-teal-600 dark:text-teal-400">Adama, Ethiopia</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section id="faq" class="py-20 lg:py-28 bg-[#F8FAFC]/40 dark:bg-[#020617]/40 border-t border-slate-200/30 dark:border-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+          <div class="text-center mb-16">
+            <span class="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-1.5 block">Got Questions?</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white tracking-tight">Frequently Asked Questions</h2>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <!-- FAQ 1 -->
+            <div class="glass rounded-[20px] border border-slate-200/60 dark:border-slate-800/80 overflow-hidden transition-all bg-white dark:bg-slate-900/20">
+              <button class="faq-item-header w-full flex items-center justify-between p-6 font-bold text-left text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/10 cursor-pointer">
+                <span>How much is each course and what is the payment model?</span>
+                <span class="faq-icon text-teal-500 transition-transform duration-300 text-lg">▼</span>
+              </button>
+              <div class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                <div class="p-6 pt-0 border-t border-slate-200/10 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                  Every single course at Amoo Academy costs exactly 200 ETB once. There are no monthly recurring subscriptions, hidden fees, or premium lockouts. You pay 200 ETB, you get lifetime study assets and support.
+                </div>
+              </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="glass rounded-[20px] border border-slate-200/60 dark:border-slate-800/80 overflow-hidden transition-all bg-white dark:bg-slate-900/20">
+              <button class="faq-item-header w-full flex items-center justify-between p-6 font-bold text-left text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/10 cursor-pointer">
+                <span>Where is Amoo Academy physically located?</span>
+                <span class="faq-icon text-teal-500 transition-transform duration-300 text-lg">▼</span>
+              </button>
+              <div class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                <div class="p-6 pt-0 border-t border-slate-200/10 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                  We are headquartered in the historic city of Harar, Ethiopia. All of our academic courses are completely digitalized, making them available to anyone across the country with an internet-connected device.
+                </div>
+              </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="glass rounded-[20px] border border-slate-200/60 dark:border-slate-800/80 overflow-hidden transition-all bg-white dark:bg-slate-900/20">
+              <button class="faq-item-header w-full flex items-center justify-between p-6 font-bold text-left text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/10 cursor-pointer">
+                <span>Will I get a certificate after completing a course?</span>
+                <span class="faq-icon text-teal-500 transition-transform duration-300 text-lg">▼</span>
+              </button>
+              <div class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                <div class="p-6 pt-0 border-t border-slate-200/10 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                  Yes! Upon completing the projects and final curriculum checklist of your enrolled course, you will receive an official digital completion certificate signed by instructor Amanuel, verified under our academy records.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="py-20 lg:py-28 border-t border-slate-200/30 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 flex flex-col">
+            <span class="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-1.5 block">Get In Touch</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white tracking-tight mb-4">Contact Our Team</h2>
+            <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed mb-8">We would love to help you build your custom layout plans or answer inquiries about payment configurations.</p>
+
+            <div class="flex flex-col gap-5">
+              <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                </div>
+                <div>
+                  <span class="block text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">Direct Call</span>
+                  <a href="tel:0967145146" class="font-black text-[#0F172A] dark:text-slate-100 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">0967145146</a>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                </div>
+                <div>
+                  <span class="block text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">E-mail Support</span>
+                  <a href="mailto:dhiirakoo@gmail.com" class="font-black text-[#0F172A] dark:text-slate-100 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">dhiirakoo@gmail.com</a>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <div>
+                  <span class="block text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">Location Office</span>
+                  <span class="font-black text-[#0F172A] dark:text-slate-100">Harar, Ethiopia</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="glass p-8 rounded-[28px] border border-slate-200/50 dark:border-slate-800/80 shadow-xl bg-white dark:bg-slate-900/30">
+              <form id="contact-form" class="space-y-5">
+                <div class="grid sm:grid-cols-2 gap-5">
+                  <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Your Name</label>
+                    <input type="text" name="name" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-950/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white transition-all text-sm font-medium" placeholder="Enter full name">
+                  </div>
+                  <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Phone Number</label>
+                    <input type="tel" name="phone" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-950/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white transition-all text-sm font-medium" placeholder="0912...">
+                  </div>
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Email Address</label>
+                  <input type="email" name="email" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-950/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white transition-all text-sm font-medium" placeholder="name@domain.com">
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Message Content</label>
+                  <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-950/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white transition-all text-sm font-medium" placeholder="How can Amanuel help you?"></textarea>
+                </div>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white font-extrabold rounded-xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 cursor-pointer text-sm">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWSLETTER SECTION -->
+      <section class="py-20 lg:py-28 bg-[#070e24] text-white border-t border-slate-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-teal-950 to-indigo-950 -z-10 animate-pulse-slow"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 class="text-3xl sm:text-4xl font-black mb-4 tracking-tight leading-none">Stay Updated on New Course Releases</h2>
+          <p class="text-teal-200/80 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed font-medium">Join our educational mailing list to receive curriculum modifications, career opportunities, and development tricks directly in your inbox.</p>
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input type="email" name="email" required class="flex-grow px-5 py-3.5 bg-white/10 border border-white/10 rounded-xl text-sm text-white placeholder-teal-200/40 focus:outline-none focus:border-teal-400 transition-all font-medium" placeholder="Enter your email address">
+            <button type="submit" class="px-6 py-3.5 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white font-black rounded-xl text-sm transition-all hover:scale-105 cursor-pointer shadow-lg shadow-teal-500/15">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="md:col-span-1">
+          <a href="index.html" class="flex items-center gap-3 mb-5 group">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-teal-500 to-indigo-500 flex items-center justify-center text-white font-bold shadow-md shadow-teal-500/10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+            </div>
+            <span class="text-lg font-black text-white tracking-tight">AMOO ACADEMY</span>
+          </a>
+          <p class="text-xs leading-relaxed mb-6 text-slate-500">
+            Learn Today, Build Tomorrow. Democratizing elite tech and visual skills training across Ethiopia at a flat-rate pricing model.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white tracking-wider uppercase mb-4">Amoo Courses</h4>
+          <ul class="space-y-2.5 text-xs font-medium">
+            <li><a href="course-details.html?id=html-css-masterclass" class="hover:text-teal-400 transition-colors">HTML & CSS Masterclass</a></li>
+            <li><a href="course-details.html?id=javascript-masterclass" class="hover:text-teal-400 transition-colors">JavaScript Masterclass</a></li>
+            <li><a href="course-details.html?id=graphic-design" class="hover:text-teal-400 transition-colors">Graphic Design Course</a></li>
+            <li><a href="course-details.html?id=video-editing" class="hover:text-teal-400 transition-colors">Video Editing Course</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white tracking-wider uppercase mb-4">Academy Links</h4>
+          <ul class="space-y-2.5 text-xs font-medium">
+            <li><a href="courses.html" class="hover:text-teal-400 transition-colors">Explore All Courses</a></li>
+            <li><a href="demo.html" class="hover:text-teal-400 transition-colors">Demo Lecture</a></li>
+            <li><a href="#faq" class="hover:text-teal-400 transition-colors">Student FAQs</a></li>
+            <li><a href="login.html" class="hover:text-teal-400 transition-colors">Portal Login</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white tracking-wider uppercase mb-4">Admin Contact</h4>
+          <ul class="space-y-3 text-xs font-medium">
+            <li class="flex items-center gap-2">
+              <span class="text-teal-500 font-bold">👤</span>
+              Amanuel (Director)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-teal-500 font-bold">📞</span>
+              0967145146
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-teal-500 font-bold">📍</span>
+              Harar, Ethiopia
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-600 font-medium">
+        <p>© 2026 AMOO ACADEMY. Built by Amanuel. Fully compatible with GitHub Pages hosting. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scroll-to-top button -->
+    <button id="scroll-to-top" class="p-3 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white rounded-full shadow-lg hover:shadow-teal-600/20 flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110" aria-label="Scroll to Top">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

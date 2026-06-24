@@ -1,0 +1,6 @@
+{
+  "name": "AMOO ACADEMY",
+  "description": "Learn Today, Build Tomorrow. Amoo Academy is a world-class online learning platform offering professional courses in web development, graphic design, video editing, digital marketing, and support services for only 200 ETB.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

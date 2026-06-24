@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | AMOO ACADEMY</title>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-[#F8FAFC] text-[#0F172A] dark:bg-[#020617] dark:text-[#F8FAFC] transition-colors duration-300 min-h-screen flex flex-col">
+    
+    <!-- Page Loader Overlay -->
+    <div id="page-loader">
+      <div class="flex flex-col items-center gap-4">
+        <div class="loader-spinner"></div>
+        <p class="text-sm font-bold tracking-wider text-teal-600 dark:text-teal-400 uppercase">Amoo Academy</p>
+      </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-50 glass border-b border-slate-200/40 dark:border-slate-800/60 w-full transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-black tracking-tight text-[#0F172A] dark:text-white leading-none">AMOO</span>
+            <span class="text-[10px] font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase mt-0.5">ACADEMY</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a>
+          <a href="courses.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Courses</a>
+          <a href="demo.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Watch Demo</a>
+          <a href="index.html#faq" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">FAQs</a>
+          <a href="index.html#contact" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side Controls -->
+        <div class="flex items-center gap-4">
+          <!-- Dark Mode Toggle Button -->
+          <button class="theme-toggle-btn p-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-900/40 transition-colors cursor-pointer" aria-label="Toggle Dark Theme">
+            <!-- Icon dynamically inserted by JS -->
+          </button>
+
+          <!-- User Dynamic Container -->
+          <div class="nav-user-container"></div>
+
+          <!-- Mobile Hamburger Trigger -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-500 dark:text-slate-300 cursor-pointer hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-80 max-w-xs bg-white dark:bg-[#0c1120] z-50 shadow-2xl p-6 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-200/50 dark:border-slate-800">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Navigation</span>
+        <button id="mobile-menu-close" class="p-2 text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-5 text-base font-bold text-slate-700 dark:text-slate-300 mb-8">
+        <a href="index.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a>
+        <a href="courses.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Courses</a>
+        <a href="demo.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Watch Demo</a>
+        <a href="index.html#faq" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">FAQs</a>
+        <a href="index.html#contact" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Contact</a>
+      </nav>
+      <div class="nav-user-container mt-auto"></div>
+    </div>
+
+    <!-- MAIN BODY -->
+    <main class="flex-grow py-8 bg-[#F8FAFC]/40 dark:bg-[#020617]/40 relative">
+      <!-- Ambient Lights -->
+      <div class="absolute top-12 left-1/4 w-[500px] h-[500px] bg-teal-400/5 rounded-full filter blur-3xl -z-10 animate-float-slow"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header banner -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 pb-6 border-b border-slate-200/60 dark:border-slate-800/60 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-teal-600 dark:text-teal-400 block mb-1">Director Management Console</span>
+            <h1 class="text-2xl sm:text-4xl font-black text-[#0F172A] dark:text-white tracking-tight flex items-center flex-wrap gap-2">
+              Academy Console
+              <span class="text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-xl ml-2">Director: Amanuel</span>
+            </h1>
+          </div>
+          <!-- Create course trigger -->
+          <button id="add-course-trigger" class="px-6 py-3.5 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] hover:scale-105 duration-300 text-white font-extrabold text-sm rounded-xl transition-all cursor-pointer flex items-center gap-2 shadow-lg shadow-teal-600/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+            Create New Course
+          </button>
+        </div>
+
+        <!-- STATISTICS GRID -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          <!-- Stat 1 -->
+          <div class="glass p-6 rounded-[22px] border border-slate-200/50 dark:border-slate-800/80 bg-white dark:bg-slate-900/30 shadow-sm relative overflow-hidden group">
+            <div class="absolute right-0 top-0 w-24 h-24 bg-teal-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Total Students</span>
+            <span id="stat-students" class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white leading-none">0</span>
+          </div>
+          <!-- Stat 2 -->
+          <div class="glass p-6 rounded-[22px] border border-slate-200/50 dark:border-slate-800/80 bg-white dark:bg-slate-900/30 shadow-sm relative overflow-hidden group">
+            <div class="absolute right-0 top-0 w-24 h-24 bg-indigo-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Live Programs</span>
+            <span id="stat-courses" class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white leading-none">0</span>
+          </div>
+          <!-- Stat 3 -->
+          <div class="glass p-6 rounded-[22px] border border-slate-200/50 dark:border-slate-800/80 bg-white dark:bg-slate-900/30 shadow-sm relative overflow-hidden group">
+            <div class="absolute right-0 top-0 w-24 h-24 bg-emerald-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Approved Revenue</span>
+            <span id="stat-revenue" class="text-3xl sm:text-4xl font-black text-emerald-500 dark:text-emerald-400 leading-none">0 ETB</span>
+          </div>
+          <!-- Stat 4 -->
+          <div class="glass p-6 rounded-[22px] border border-slate-200/50 dark:border-slate-800/80 bg-white dark:bg-slate-900/30 shadow-sm relative overflow-hidden group">
+            <div class="absolute right-0 top-0 w-24 h-24 bg-amber-500/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Pending Fees</span>
+            <span id="stat-pending" class="text-3xl sm:text-4xl font-black text-amber-500 leading-none">0</span>
+          </div>
+        </div>
+
+        <!-- TABS BAR -->
+        <div class="flex items-center gap-2 border-b border-slate-200/60 dark:border-slate-800/60 mb-8 overflow-x-auto whitespace-nowrap">
+          <button onclick="switchTab('tab-courses')" id="btn-tab-courses" class="tab-btn px-6 py-4 text-xs sm:text-sm font-extrabold text-teal-600 border-b-2 border-teal-600 transition-all cursor-pointer">Live Courses</button>
+          <button onclick="switchTab('tab-enrollments')" id="btn-tab-enrollments" class="tab-btn px-6 py-4 text-xs sm:text-sm font-extrabold text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all cursor-pointer">Admission Logs</button>
+          <button onclick="switchTab('tab-students')" id="btn-tab-students" class="tab-btn px-6 py-4 text-xs sm:text-sm font-extrabold text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all cursor-pointer">Student Directory</button>
+        </div>
+
+        <!-- SUB TAB 1: COURSES CATALOG MANAGER -->
+        <div id="tab-courses" class="admin-tab-content block space-y-6">
+          <div class="glass rounded-[24px] border border-slate-200/40 dark:border-slate-800/80 overflow-hidden shadow-xl bg-white dark:bg-slate-900/30">
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr class="bg-slate-100/50 dark:bg-slate-900/50 border-b border-slate-200/40 dark:border-slate-800/80 text-slate-400 font-extrabold uppercase tracking-wider text-[10px]">
+                    <th class="p-5">Program Catalog Details</th>
+                    <th class="p-5">Duration</th>
+                    <th class="p-5">Price Fee</th>
+                    <th class="p-5">Students Count</th>
+                    <th class="p-5">Control Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-courses-list" class="divide-y divide-slate-200/30 dark:divide-slate-800/30">
+                  <!-- Loaded via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB TAB 2: ENROLLMENTS MANAGER -->
+        <div id="tab-enrollments" class="admin-tab-content hidden space-y-6">
+          <div class="glass rounded-[24px] border border-slate-200/40 dark:border-slate-800/80 overflow-hidden shadow-xl bg-white dark:bg-slate-900/30">
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr class="bg-slate-100/50 dark:bg-slate-900/50 border-b border-slate-200/40 dark:border-slate-800/80 text-slate-400 font-extrabold uppercase tracking-wider text-[10px]">
+                    <th class="p-5">Student Info</th>
+                    <th class="p-5">Course Requested</th>
+                    <th class="p-5">Submitted Date</th>
+                    <th class="p-5">Amount Logged</th>
+                    <th class="p-5">Status</th>
+                    <th class="p-5 text-right">Approve/Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-enrollments-list" class="divide-y divide-slate-200/30 dark:divide-slate-800/30">
+                  <!-- Loaded via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB TAB 3: STUDENT DIRECTORY -->
+        <div id="tab-students" class="admin-tab-content hidden space-y-6">
+          <div class="glass rounded-[24px] border border-slate-200/40 dark:border-slate-800/80 overflow-hidden shadow-xl bg-white dark:bg-slate-900/30">
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr class="bg-slate-100/50 dark:bg-slate-900/50 border-b border-slate-200/40 dark:border-slate-800/80 text-slate-400 font-extrabold uppercase tracking-wider text-[10px]">
+                    <th class="p-5">Full Student Profile</th>
+                    <th class="p-5">Email Address</th>
+                    <th class="p-5">Phone Number</th>
+                    <th class="p-5">Register Date</th>
+                    <th class="p-5">Control Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-users-list" class="divide-y divide-slate-200/30 dark:divide-slate-800/30">
+                  <!-- Loaded via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- CREATE COURSE MODAL -->
+    <div id="add-course-modal" class="modal-overlay">
+      <div class="modal-content glass p-8 rounded-[28px] border border-slate-200/50 dark:border-slate-800/80 shadow-2xl max-w-xl w-full mx-4 overflow-y-auto max-h-[90vh] bg-white dark:bg-[#020617]">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl sm:text-2xl font-black text-[#0F172A] dark:text-white tracking-tight">Create Program Course</h2>
+          <button class="close-admin-modal text-slate-400 hover:text-rose-600 font-bold text-xl cursor-pointer">✕</button>
+        </div>
+
+        <form id="add-course-form" class="space-y-5 text-left">
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Course Title</label>
+            <input type="text" id="add-title" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium" placeholder="e.g. Python Masterclass">
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Category</label>
+              <select id="add-category" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-semibold text-slate-700 dark:text-slate-200">
+                <option value="Development">Development</option>
+                <option value="Design">Design</option>
+                <option value="Multimedia">Multimedia</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Professional Development">Professional Dev</option>
+              </select>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Duration Schedule</label>
+              <input type="text" id="add-duration" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium" placeholder="e.g. 5 Weeks (20 Hours)">
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Price Fee (ETB)</label>
+              <input type="number" id="add-price" required value="200" class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium" placeholder="200">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Image Assets URL</label>
+              <input type="url" id="add-img" class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium" placeholder="https://images.unsplash.com/photo-...">
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Detailed Description</label>
+            <textarea id="add-desc" rows="3" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium" placeholder="Summarize curriculum targets and course deliverables..."></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white font-extrabold rounded-xl transition-all shadow-lg hover:scale-[1.02] duration-300 text-sm cursor-pointer mt-2">
+            Create Course Log
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- EDIT COURSE MODAL -->
+    <div id="edit-course-modal" class="modal-overlay">
+      <div class="modal-content glass p-8 rounded-[28px] border border-slate-200/50 dark:border-slate-800/80 shadow-2xl max-w-xl w-full mx-4 overflow-y-auto max-h-[90vh] bg-white dark:bg-[#020617]">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl sm:text-2xl font-black text-[#0F172A] dark:text-white tracking-tight">Modify Program Course</h2>
+          <button class="close-admin-modal text-slate-400 hover:text-rose-600 font-bold text-xl cursor-pointer">✕</button>
+        </div>
+
+        <form id="edit-course-form" class="space-y-5 text-left">
+          <input type="hidden" id="edit-course-id">
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Course Title</label>
+            <input type="text" id="edit-title" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium">
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Category</label>
+              <select id="edit-category" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-semibold text-slate-700 dark:text-slate-200">
+                <option value="Development">Development</option>
+                <option value="Design">Design</option>
+                <option value="Multimedia">Multimedia</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Professional Development">Professional Dev</option>
+              </select>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Duration Schedule</label>
+              <input type="text" id="edit-duration" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium">
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Price Fee (ETB)</label>
+              <input type="number" id="edit-price" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Image Assets URL</label>
+              <input type="url" id="edit-img" class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium">
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Detailed Description</label>
+            <textarea id="edit-desc" rows="3" required class="w-full px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white text-sm font-medium"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white font-extrabold rounded-xl transition-all shadow-lg hover:scale-[1.02] duration-300 text-sm cursor-pointer mt-2">
+            Save Course Modifications
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 text-center text-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-medium">
+        <p>© 2026 AMOO ACADEMY. Admin Panel authorized for Amanuel. Harar, Ethiopia. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+    <script type="module">
+      window.switchTab = function(tabId) {
+        // Hide all contents
+        const contents = document.querySelectorAll(".admin-tab-content");
+        contents.forEach(c => c.classList.add("hidden"));
+        contents.forEach(c => c.classList.remove("block"));
+
+        // Show selected tab content
+        const target = document.getElementById(tabId);
+        if (target) {
+          target.classList.remove("hidden");
+          target.classList.add("block");
+        }
+
+        // Reset tab styles
+        const tabs = document.querySelectorAll(".tab-btn");
+        tabs.forEach(t => {
+          t.classList.remove("text-teal-600", "border-teal-600");
+          t.classList.add("text-slate-500");
+          t.style.borderBottomColor = "transparent";
+        });
+
+        // Set active tab styles
+        const activeTabBtn = document.getElementById("btn-" + tabId);
+        if (activeTabBtn) {
+          activeTabBtn.classList.remove("text-slate-500");
+          activeTabBtn.classList.add("text-teal-600", "border-teal-600");
+          activeTabBtn.style.borderBottomColor = "currentColor";
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Enrollment | AMOO ACADEMY</title>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-[#F8FAFC] text-[#0F172A] dark:bg-[#020617] dark:text-[#F8FAFC] transition-colors duration-300 min-h-screen flex flex-col">
+    
+    <!-- Page Loader Overlay -->
+    <div id="page-loader">
+      <div class="flex flex-col items-center gap-4">
+        <div class="loader-spinner"></div>
+        <p class="text-sm font-bold tracking-wider text-teal-600 dark:text-teal-400 uppercase">Amoo Academy</p>
+      </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-50 glass border-b border-slate-200/40 dark:border-slate-800/60 w-full transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-black tracking-tight text-[#0F172A] dark:text-white leading-none">AMOO</span>
+            <span class="text-[10px] font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase mt-0.5">ACADEMY</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a>
+          <a href="courses.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Courses</a>
+          <a href="demo.html" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Watch Demo</a>
+          <a href="index.html#faq" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">FAQs</a>
+          <a href="index.html#contact" class="text-sm font-semibold text-slate-500 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side Controls -->
+        <div class="flex items-center gap-4">
+          <!-- Dark Mode Toggle Button -->
+          <button class="theme-toggle-btn p-2.5 rounded-xl border border-slate-200/50 dark:border-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-900/40 transition-colors cursor-pointer" aria-label="Toggle Dark Theme">
+            <!-- Icon dynamically inserted by JS -->
+          </button>
+
+          <!-- User Dynamic Container -->
+          <div class="nav-user-container"></div>
+
+          <!-- Mobile Hamburger Trigger -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-500 dark:text-slate-300 cursor-pointer hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-80 max-w-xs bg-white dark:bg-[#0c1120] z-50 shadow-2xl p-6 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-200/50 dark:border-slate-800">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Navigation</span>
+        <button id="mobile-menu-close" class="p-2 text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-5 text-base font-bold text-slate-700 dark:text-slate-300 mb-8">
+        <a href="index.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a>
+        <a href="courses.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Courses</a>
+        <a href="demo.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Watch Demo</a>
+        <a href="index.html#faq" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">FAQs</a>
+        <a href="index.html#contact" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Contact</a>
+      </nav>
+      <div class="nav-user-container mt-auto"></div>
+    </div>
+
+    <!-- MAIN BODY -->
+    <main class="flex-grow py-16 sm:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span class="text-sm font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-1 block">Secure Enrollment</span>
+          <h1 class="text-3xl sm:text-4xl font-black text-[#0F172A] dark:text-white tracking-tight leading-none mb-3">Secure Program Enrollment</h1>
+          <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Complete your profile records and secure your academic catalog seat</p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Selected Course (Sidebar / 5 columns) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="glass p-8 rounded-[28px] border border-slate-200/50 dark:border-slate-800/80 shadow-2xl space-y-5 bg-white dark:bg-slate-900/30">
+              <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Your Chosen Program</h2>
+              
+              <div class="rounded-2xl overflow-hidden aspect-video relative max-h-56">
+                <img id="enroll-course-img" src="" alt="" class="w-full h-full object-cover">
+                <span id="enroll-course-category" class="absolute top-4 left-4 px-3.5 py-1 text-[10px] font-black tracking-widest text-white bg-teal-600 rounded-full uppercase">Development</span>
+              </div>
+
+              <div>
+                <h3 id="enroll-course-title" class="text-lg font-black text-[#0F172A] dark:text-white leading-tight mb-1.5">Course Title</h3>
+                <div class="flex items-center gap-4 text-xs font-bold text-slate-500 dark:text-slate-400">
+                  <span id="enroll-course-duration">6 Weeks Access</span>
+                  <span class="text-slate-300 dark:text-slate-800">•</span>
+                  <span>Instructor Support Included</span>
+                </div>
+              </div>
+
+              <div class="border-t border-slate-200/10 pt-4 flex items-center justify-between text-base">
+                <span class="font-extrabold text-slate-500 dark:text-slate-400">Price Admission Fee:</span>
+                <span id="enroll-course-price" class="text-2xl font-black text-teal-600 dark:text-teal-400 font-mono">200 ETB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout Fields (7 columns) -->
+          <div class="lg:col-span-7">
+            <div class="glass p-8 rounded-[28px] border border-slate-200/50 dark:border-slate-800/80 shadow-2xl relative bg-white dark:bg-slate-900/30">
+              <h2 class="text-lg font-black text-[#0F172A] dark:text-white tracking-tight mb-6">Complete Enrollment Form</h2>
+
+              <form id="enroll-form" class="space-y-5">
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Student Full Name</label>
+                  <input type="text" id="enroll-name" required class="w-full px-4 py-3.5 bg-white/50 dark:bg-slate-950/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white transition-all text-sm font-medium" placeholder="Enter full name">
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-5">
+                  <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</label>
+                    <input type="email" id="enroll-email" required class="w-full px-4 py-3.5 bg-white/50 dark:bg-slate-950/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white transition-all text-sm font-medium" placeholder="student@gmail.com">
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Phone Number</label>
+                    <input type="tel" id="enroll-phone" required class="w-full px-4 py-3.5 bg-white/50 dark:bg-slate-950/50 border border-slate-300/40 dark:border-slate-800 rounded-xl focus:border-teal-500 focus:outline-none dark:text-white transition-all text-sm font-medium" placeholder="0967...">
+                  </div>
+                </div>
+
+                <!-- Payment details disclaimer -->
+                <div class="p-5 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-xs text-amber-800 dark:text-amber-400 space-y-2 leading-relaxed">
+                  <span class="font-extrabold block text-sm">🏦 Payment Instruction (CBE / Telebirr):</span>
+                  <span class="block">Please send the 200 ETB admission fee to Amanuel's mobile account:</span>
+                  <span class="block font-black text-[#0F172A] dark:text-slate-100 font-mono text-sm bg-amber-500/10 dark:bg-amber-500/5 px-3 py-1.5 rounded-lg w-fit">• Telebirr / CBE Mobile: 0967145146</span>
+                  <span class="block text-slate-500 dark:text-slate-400 font-medium mt-1">Upon submission, your enrollment logs will be updated. Our director Amanuel will verify your payment record within 1-2 hours.</span>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white font-extrabold rounded-xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 cursor-pointer text-sm">
+                  Submit Enrollment & Pay
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <!-- SUCCESS MODAL POPUP -->
+    <div id="enroll-success-modal" class="modal-overlay">
+      <div class="modal-content glass p-8 rounded-[28px] border border-slate-200/50 dark:border-slate-800/80 shadow-2xl max-w-md w-full text-center space-y-6 mx-4 bg-white dark:bg-slate-950">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-3xl font-black mx-auto">
+          ✓
+        </div>
+        <div>
+          <h2 class="text-2xl font-black text-[#0F172A] dark:text-white tracking-tight mb-2">Enrollment Submitted!</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+            Congratulations! Your registration record for <strong class="font-bold text-[#0F172A] dark:text-slate-200">200 ETB</strong> has been logged in our databases.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/40 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 text-left space-y-2 leading-relaxed">
+          <span class="font-bold text-[#0F172A] dark:text-slate-200 block">Next Steps:</span>
+          <span>1. Transfer 200 ETB to <strong class="font-bold text-[#0F172A] dark:text-slate-200">0967145146</strong> (Telebirr / CBE).</span>
+          <span>2. Text payment receipt screenshot to Amanuel.</span>
+          <span>3. Your student seat will be set to Approved.</span>
+        </div>
+        <button id="close-success-modal" class="w-full py-3.5 bg-gradient-to-r from-[#14B8A6] to-[#0ea5e9] text-white font-bold rounded-xl text-sm transition-all hover:scale-105 cursor-pointer">
+          Continue to Courses
+        </button>
+      </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="md:col-span-1">
+          <a href="index.html" class="flex items-center gap-3 mb-5 group">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-teal-500 to-indigo-500 flex items-center justify-center text-white font-bold shadow-md shadow-teal-500/10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+            </div>
+            <span class="text-lg font-black text-white tracking-tight">AMOO ACADEMY</span>
+          </a>
+          <p class="text-xs leading-relaxed mb-6 text-slate-500">
+            Learn Today, Build Tomorrow. Democratizing elite tech and visual skills training across Ethiopia at a flat-rate pricing model.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white tracking-wider uppercase mb-4">Amoo Courses</h4>
+          <ul class="space-y-2.5 text-xs font-medium">
+            <li><a href="course-details.html?id=html-css-masterclass" class="hover:text-teal-400 transition-colors">HTML & CSS Masterclass</a></li>
+            <li><a href="course-details.html?id=javascript-masterclass" class="hover:text-teal-400 transition-colors">JavaScript Masterclass</a></li>
+            <li><a href="course-details.html?id=graphic-design" class="hover:text-teal-400 transition-colors">Graphic Design Course</a></li>
+            <li><a href="course-details.html?id=video-editing" class="hover:text-teal-400 transition-colors">Video Editing Course</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white tracking-wider uppercase mb-4">Academy Links</h4>
+          <ul class="space-y-2.5 text-xs font-medium">
+            <li><a href="courses.html" class="hover:text-teal-400 transition-colors">Explore All Courses</a></li>
+            <li><a href="demo.html" class="hover:text-teal-400 transition-colors">Demo Lecture</a></li>
+            <li><a href="index.html#faq" class="hover:text-teal-400 transition-colors">Student FAQs</a></li>
+            <li><a href="login.html" class="hover:text-teal-400 transition-colors">Portal Login</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white tracking-wider uppercase mb-4">Admin Contact</h4>
+          <ul class="space-y-3 text-xs font-medium">
+            <li class="flex items-center gap-2">
+              <span class="text-teal-500 font-bold">👤</span>
+              Amanuel (Director)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-teal-500 font-bold">📞</span>
+              0967145146
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-teal-500 font-bold">📍</span>
+              Harar, Ethiopia
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-600 font-medium">
+        <p>© 2026 AMOO ACADEMY. Built by Amanuel. Fully compatible with GitHub Pages hosting. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
